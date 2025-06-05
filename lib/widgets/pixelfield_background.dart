@@ -9,9 +9,15 @@ class PixelfieldBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.kbgColor,
+        image: DecorationImage(
+          image: AssetImage('assets/images/png/bgImg.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
       height: MediaQuery.of(context).size.height,
-      color: AppTheme.kbgColor,
-      child: Image.asset('assets/images/png/bgImg.png', fit: BoxFit.cover),
+      child: child,
     );
   }
 }
