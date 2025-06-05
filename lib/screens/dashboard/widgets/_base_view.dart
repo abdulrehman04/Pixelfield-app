@@ -14,7 +14,7 @@ class BaseView extends StatelessWidget {
     return Scaffold(
       body: child,
       bottomNavigationBar: Container(
-        color: AppTheme.kbgColor,
+        color: AppTheme.kDarkbgColor,
         height: 80.h,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -10,7 +10,7 @@ class PixelfieldBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.kbgColor,
+        color: AppTheme.kDarkbgColor,
         image: DecorationImage(
           image: AssetImage('assets/images/png/bgImg.png'),
           fit: BoxFit.cover,
