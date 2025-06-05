@@ -28,8 +28,8 @@ class FetchCollectionLoadingState extends FetchCollectionState {
 }
 
 class FetchCollectionSuccessState extends FetchCollectionState {
-  final List data;
-  const FetchCollectionSuccessState({required this.data});
+  final List<CollectionModel> collection;
+  const FetchCollectionSuccessState({required this.collection});
 }
 
 class FetchCollectionFailureState extends FetchCollectionState {

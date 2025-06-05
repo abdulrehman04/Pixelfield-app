@@ -2,14 +2,27 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:pixelfield_test_project/api/api.dart';
 import 'package:pixelfield_test_project/blocs/collection_bloc/event.dart';
 import 'package:pixelfield_test_project/blocs/collection_bloc/state.dart';
+import 'package:pixelfield_test_project/models/collection_model.dart';
 
 part './states/_fetch_collect_state.dart';
+part './collection_repo_interface.dart';
+part './repository.dart';
+part './data_provider.dart';
 
 class CollectionBloc extends HydratedBloc<CollectionEvents, CollectionStates> {
-  CollectionBloc() : super(CollectionStateDefault()) {
+  CollectionBloc({required ICollectionRepoInterface repo})
+    : _repo = repo,
+      super(CollectionStateDefault()) {
     on<FetchCollectionEvent>(_onFetchCollection);
+  }
+
+  final ICollectionRepoInterface _repo;
+
+  factory CollectionBloc.withDefaultRepo() {
+    return CollectionBloc(repo: _CollectionRepo());
   }
 
   @override
@@ -19,7 +32,7 @@ class CollectionBloc extends HydratedBloc<CollectionEvents, CollectionStates> {
 
   @override
   Map<String, dynamic>? toJson(CollectionStates state) {
-    state.toMap();
+    return state.toMap();
   }
 
   Future<void> _onFetchCollection(
@@ -28,7 +41,7 @@ class CollectionBloc extends HydratedBloc<CollectionEvents, CollectionStates> {
   ) async {
     emit(state.copyWith(fetchCollectionState: FetchCollectionLoadingState()));
     try {
-      // final collection = await _repo.fetchCollection();
+      final collection = await _repo.fetchCollection();
     } catch (e) {
       emit(
         state.copyWith(
