@@ -23,13 +23,19 @@ class NavBarItem extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/png/$img.png',
-              color: isSelected ? Colors.white : AppTheme.kDisabledGreyColor,
+              color:
+                  isSelected
+                      ? AppTheme.kGrey1Color
+                      : AppTheme.kDisabledGreyColor,
             ),
             8.verticalSpace,
             Text(
               title,
               style: GoogleFonts.lato(
-                color: isSelected ? Colors.white : AppTheme.kDisabledGreyColor,
+                color:
+                    isSelected
+                        ? AppTheme.kGrey1Color
+                        : AppTheme.kDisabledGreyColor,
               ),
             ),
           ],

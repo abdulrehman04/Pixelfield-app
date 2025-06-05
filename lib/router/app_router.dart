@@ -17,6 +17,24 @@ class AppRouter {
         path: AppRoutes.splash,
         pageBuilder: (context, state) => const MaterialPage(child: Splash()),
       ),
+      GoRoute(
+        path: '${AppRoutes.details}/:id',
+        pageBuilder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: DetailsScreen(id: id),
+            transitionsBuilder: (
+              context,
+              animation,
+              secondaryAnimation,
+              child,
+            ) {
+              return FadeTransition(opacity: animation, child: child);
+            },
+          );
+        },
+      ),
       ShellRoute(
         builder: (context, state, child) {
           return Dashboard(child: child);
@@ -37,26 +55,6 @@ class AppRouter {
                     return FadeTransition(opacity: animation, child: child);
                   },
                 ),
-            routes: [
-              GoRoute(
-                path: '${AppRoutes.details}/:id',
-                pageBuilder: (context, state) {
-                  final id = state.pathParameters['id']!;
-                  return CustomTransitionPage(
-                    key: state.pageKey,
-                    child: DetailsScreen(id: id),
-                    transitionsBuilder: (
-                      context,
-                      animation,
-                      secondaryAnimation,
-                      child,
-                    ) {
-                      return FadeTransition(opacity: animation, child: child);
-                    },
-                  );
-                },
-              ),
-            ],
           ),
           GoRoute(
             path: AppRoutes.scan,

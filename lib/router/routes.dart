@@ -5,5 +5,5 @@ class AppRoutes {
   static const shop = '/shop';
   static const settings = '/settings';
 
-  static const details = 'details';
+  static const details = '/details';
 }
