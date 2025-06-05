@@ -1,7 +1,9 @@
 part of '../details.dart';
 
 class DetailsSubPage extends StatelessWidget {
-  const DetailsSubPage({super.key});
+  const DetailsSubPage({super.key, required this.details});
+
+  final BottleDetails details;
 
   @override
   Widget build(BuildContext context) {

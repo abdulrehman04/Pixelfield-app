@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pixelfield_test_project/configs/configs.dart';
+import 'package:pixelfield_test_project/models/bottle_details.dart';
 import 'package:pixelfield_test_project/models/bottle_model.dart';
 import 'package:pixelfield_test_project/screens/details/static/subpage_enum.dart';
 import 'package:pixelfield_test_project/screens/details/widgets/_history_subview.dart';
@@ -19,6 +20,8 @@ part './widgets/_tasting_notes_subview.dart';
 part './widgets/_note_item.dart';
 part './widgets/_history_item.dart';
 part './widgets/_collection_name.dart';
+part './widgets/_subpage_row.dart';
+part './widgets/_bottle_status.dart';
 part './_state.dart';
 
 class DetailsScreen extends StatelessWidget {

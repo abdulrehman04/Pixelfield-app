@@ -11,10 +11,10 @@ class _ScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  getSubPage() {
+  getSubPage(Bottle bottle) {
     switch (subpage) {
       case SubpageEnum.Details:
-        return DetailsSubPage();
+        return DetailsSubPage(details: bottle.details);
       case SubpageEnum.Tasting_Notes:
         return TastingNotesSubview();
       case SubpageEnum.History:

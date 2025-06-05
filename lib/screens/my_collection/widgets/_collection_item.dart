@@ -24,7 +24,7 @@ class CollectionItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${item.name} #${item.id}',
+                      '${item.name} ${item.year} #${item.id}',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: AppTheme.kGrey1Color,
                       ),

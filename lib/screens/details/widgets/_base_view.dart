@@ -19,33 +19,10 @@ class BaseView extends StatelessWidget {
         child: Column(
           children: [
             CollectionName(collectionName: collectionName),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 16.w),
-              padding: EdgeInsets.all(8),
-              color: AppTheme.kDarkbgColor,
-              child: Row(
-                children: [
-                  Image.asset('assets/images/png/genuine_icon.png'),
-                  8.horizontalSpace,
-                  Text(
-                    bottle.status,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
-                  Spacer(),
-                  Image.asset('assets/images/png/down_arrow.png'),
-                ],
-              ),
-            ),
-
+            BottleStatus(status: bottle.status),
             Container(
               padding: EdgeInsets.symmetric(vertical: 39.h, horizontal: 34.w),
-              child: Image.asset(
-                'assets/images/png/bottle_large.png',
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(bottle.largeImage, fit: BoxFit.cover),
             ),
 
             Container(
@@ -57,7 +34,7 @@ class BaseView extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Bottle 112/158',
+                      'Bottle ${bottle.bottleNumber}',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: AppTheme.kGrey2Color,
                       ),
@@ -69,64 +46,19 @@ class BaseView extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineLarge
                           ?.copyWith(color: AppTheme.kGrey1Color),
                       children: [
-                        TextSpan(text: 'Talisker '),
+                        TextSpan(text: '${bottle.name} '),
                         TextSpan(
-                          text: '18 years old ',
+                          text: '${bottle.age} ',
                           style: TextStyle(color: AppTheme.kPrimaryColor),
                         ),
-                        TextSpan(text: '#2504'),
+                        TextSpan(text: '#${bottle.id}'),
                       ],
                     ),
                   ),
                   24.verticalSpace,
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: AppTheme.kMediumBgColor,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Row(
-                        children:
-                            SubpageEnum.values.map((e) {
-                              return Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    state.setSubPage(e);
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      color:
-                                          state.subpage == e
-                                              ? AppTheme.kPrimaryColor
-                                              : null,
-                                    ),
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 6.h,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        e.label,
-                                        style: Theme.of(
-                                          context,
-                                        ).textTheme.bodySmall?.copyWith(
-                                          color:
-                                              state.subpage != e
-                                                  ? AppTheme.kDisabledGreyColor
-                                                  : AppTheme.kDarkbgColor,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }).toList(),
-                      ),
-                    ),
-                  ),
+                  SubpageRow(),
                   24.verticalSpace,
-                  state.getSubPage(),
+                  state.getSubPage(bottle),
                 ],
               ),
             ),
