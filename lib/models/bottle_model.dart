@@ -7,6 +7,7 @@ class Bottle {
   final String largeImage;
   final String bottleNumber;
   final String name;
+  final String year;
   final String age;
   final String id;
   final BottleDetails details;
@@ -25,6 +26,7 @@ class Bottle {
     required this.history,
     required this.status,
     required this.largeImage,
+    required this.year,
   });
 
   factory Bottle.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class Bottle {
       name: json['name'],
       age: json['age'],
       id: json['id'],
+      year: json['year'],
       status: json['status'] ?? 'Opened',
       details: BottleDetails.fromJson(json['details']),
       tastingNotes: TastingNotes.fromJson(json['tastingNotes']),
