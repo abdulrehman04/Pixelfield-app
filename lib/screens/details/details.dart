@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pixelfield_test_project/configs/configs.dart';
+import 'package:pixelfield_test_project/models/bottle_model.dart';
 import 'package:pixelfield_test_project/screens/details/static/subpage_enum.dart';
 import 'package:pixelfield_test_project/screens/details/widgets/_history_subview.dart';
 import 'package:pixelfield_test_project/widgets/buttons/app_button.dart';
@@ -17,12 +18,20 @@ part './widgets/_details_sub_page.dart';
 part './widgets/_tasting_notes_subview.dart';
 part './widgets/_note_item.dart';
 part './widgets/_history_item.dart';
+part './widgets/_collection_name.dart';
 part './_state.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key, required this.id});
+  const DetailsScreen({
+    super.key,
+    required this.id,
+    required this.collectionName,
+    required this.item,
+  });
 
   final String id;
+  final Bottle item;
+  final String collectionName;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,7 @@ class DetailsScreen extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           body: Responsive(
-            mobile: const _Mobile(),
+            mobile: _Mobile(collectionName, item),
             tablet: const _Tablet(),
             desktop: const _Desktop(),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pixelfield_test_project/models/bottle_model.dart';
 import 'package:pixelfield_test_project/router/routes.dart';
 import 'package:pixelfield_test_project/screens/dashboard/dashboard.dart';
 import 'package:pixelfield_test_project/screens/details/details.dart';
@@ -21,9 +22,16 @@ class AppRouter {
         path: '${AppRoutes.details}/:id',
         pageBuilder: (context, state) {
           final id = state.pathParameters['id']!;
+          final extra = state.extra as Map;
+          final item = extra['item'] as Bottle;
+          final collection = extra['collectionName'] as String;
           return CustomTransitionPage(
             key: state.pageKey,
-            child: DetailsScreen(id: id),
+            child: DetailsScreen(
+              id: id,
+              collectionName: collection,
+              item: item,
+            ),
             transitionsBuilder: (
               context,
               animation,

@@ -1,7 +1,14 @@
 part of '../details.dart';
 
 class BaseView extends StatelessWidget {
-  const BaseView({super.key});
+  const BaseView({
+    super.key,
+    required this.bottle,
+    required this.collectionName,
+  });
+
+  final Bottle bottle;
+  final String collectionName;
 
   @override
   Widget build(BuildContext context) {
@@ -11,40 +18,7 @@ class BaseView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    color: AppTheme.kDarkbgColor,
-                    padding: EdgeInsets.symmetric(
-                      vertical: 4.h,
-                      horizontal: 8.w,
-                    ),
-                    child: Text(
-                      'Genesis Collection',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: AppTheme.kGrey1Color,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(13.2),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppTheme.kDarkbgColor,
-                    ),
-                    child: Icon(
-                      Icons.close,
-                      color: AppTheme.kGrey1Color,
-                      size: 24,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
+            CollectionName(collectionName: collectionName),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16.w),
               padding: EdgeInsets.all(8),
@@ -54,7 +28,7 @@ class BaseView extends StatelessWidget {
                   Image.asset('assets/images/png/genuine_icon.png'),
                   8.horizontalSpace,
                   Text(
-                    'Genuine Bottle (Unopened)',
+                    bottle.status,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w700,
                       color: AppTheme.kGrey1Color,
