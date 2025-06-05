@@ -16,10 +16,8 @@ class _ScreenState extends ChangeNotifier {
       case SubpageEnum.Details:
         return DetailsSubPage();
       case SubpageEnum.Tasting_Notes:
-        return DetailsSubPage();
+        return TastingNotesSubview();
       case SubpageEnum.History:
-        return DetailsSubPage();
-      default:
         return DetailsSubPage();
     }
   }

@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pixelfield_test_project/configs/configs.dart';
 import 'package:pixelfield_test_project/screens/details/static/subpage_enum.dart';
 import 'package:pixelfield_test_project/widgets/buttons/app_button.dart';
@@ -15,6 +13,7 @@ part './views/_tablet.dart';
 part './widgets/_base_view.dart';
 part './widgets/_key_value_details.dart';
 part './widgets/_details_sub_page.dart';
+part './widgets/_tasting_notes_subview.dart';
 part './_state.dart';
 
 class DetailsScreen extends StatelessWidget {
