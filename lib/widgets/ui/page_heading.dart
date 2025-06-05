@@ -10,11 +10,9 @@ class PageHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(
-        color: AppTheme.kGrey1Color,
-        fontSize: 32.sp,
-        fontWeight: FontWeight.w500,
-      ),
+      style: Theme.of(
+        context,
+      ).textTheme.headlineLarge?.copyWith(color: AppTheme.kGrey1Color),
     );
   }
 }

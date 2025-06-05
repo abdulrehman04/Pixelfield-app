@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pixelfield_test_project/configs/configs.dart';
+import 'package:pixelfield_test_project/configs/theme/_text_theme.dart';
 import 'package:pixelfield_test_project/router/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(
               seedColor: AppTheme.kPrimaryColor,
             ),
-            textTheme: GoogleFonts.ebGaramondTextTheme(),
+            textTheme: customTextTheme,
             primaryColor: AppTheme.kPrimaryColor,
           ),
           routerDelegate: AppRouter.router.routerDelegate,

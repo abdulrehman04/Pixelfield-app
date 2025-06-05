@@ -8,4 +8,5 @@ abstract class AppTheme {
 
   static const Color kDisabledGreyColor = Color(0xff899194);
   static const Color kGrey1Color = Color(0xffE7E9EA);
+  static const Color kGrey2Color = Color(0xffB8BDBF);
 }

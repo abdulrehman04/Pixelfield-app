@@ -60,16 +60,17 @@ class BaseView extends StatelessWidget {
                                     children: [
                                       Text(
                                         'Springbank 1992 #1234',
-                                        style: TextStyle(
-                                          fontSize: 22.sp,
-                                          fontWeight: FontWeight.w500,
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.titleLarge?.copyWith(
                                           color: AppTheme.kGrey1Color,
                                         ),
                                       ),
                                       Text(
                                         '(112/158)',
-                                        style: GoogleFonts.lato(
-                                          fontSize: 12.sp,
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.bodySmall?.copyWith(
                                           color: AppTheme.kGrey1Color,
                                         ),
                                       ),
