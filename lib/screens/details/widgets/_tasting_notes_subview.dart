@@ -37,82 +37,19 @@ class TastingNotesSubview extends StatelessWidget {
         12.verticalSpace,
         Column(
           children: [
-            Container(
-              width: double.infinity,
-              color: AppTheme.kMediumBgColor,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Nose',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
-                  4.verticalSpace,
-                  ...(['Description', 'Description', 'Description'].map((e) {
-                    return Text(
-                      e,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.kGrey1Color,
-                      ),
-                    );
-                  }).toList()),
-                ],
-              ),
+            NoteItem(
+              title: 'Nose',
+              values: ['Description', 'Description', 'Description'],
             ),
             8.verticalSpace,
-            Container(
-              width: double.infinity,
-              color: AppTheme.kMediumBgColor,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Palate',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
-                  4.verticalSpace,
-                  ...(['Description', 'Description', 'Description'].map((e) {
-                    return Text(
-                      e,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.kGrey1Color,
-                      ),
-                    );
-                  }).toList()),
-                ],
-              ),
+            NoteItem(
+              title: 'Palate',
+              values: ['Description', 'Description', 'Description'],
             ),
             8.verticalSpace,
-            Container(
-              width: double.infinity,
-              color: AppTheme.kMediumBgColor,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Finish',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
-                  4.verticalSpace,
-                  ...(['Description', 'Description', 'Description'].map((e) {
-                    return Text(
-                      e,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.kGrey1Color,
-                      ),
-                    );
-                  }).toList()),
-                ],
-              ),
+            NoteItem(
+              title: 'Finish',
+              values: ['Description', 'Description', 'Description'],
             ),
           ],
         ),
@@ -132,82 +69,19 @@ class TastingNotesSubview extends StatelessWidget {
         18.verticalSpace,
         Column(
           children: [
-            Container(
-              width: double.infinity,
-              color: AppTheme.kMediumBgColor,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Nose',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
-                  4.verticalSpace,
-                  ...(['Description', 'Description', 'Description'].map((e) {
-                    return Text(
-                      e,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.kGrey1Color,
-                      ),
-                    );
-                  }).toList()),
-                ],
-              ),
+            NoteItem(
+              title: 'Nose',
+              values: ['Description', 'Description', 'Description'],
             ),
             8.verticalSpace,
-            Container(
-              width: double.infinity,
-              color: AppTheme.kMediumBgColor,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Palate',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
-                  4.verticalSpace,
-                  ...(['Description', 'Description', 'Description'].map((e) {
-                    return Text(
-                      e,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.kGrey1Color,
-                      ),
-                    );
-                  }).toList()),
-                ],
-              ),
+            NoteItem(
+              title: 'Palate',
+              values: ['Description', 'Description', 'Description'],
             ),
             8.verticalSpace,
-            Container(
-              width: double.infinity,
-              color: AppTheme.kMediumBgColor,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Finish',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
-                  4.verticalSpace,
-                  ...(['Description', 'Description', 'Description'].map((e) {
-                    return Text(
-                      e,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.kGrey1Color,
-                      ),
-                    );
-                  }).toList()),
-                ],
-              ),
+            NoteItem(
+              title: 'Finish',
+              values: ['Description', 'Description', 'Description'],
             ),
           ],
         ),
