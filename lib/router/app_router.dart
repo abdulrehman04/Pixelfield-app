@@ -3,6 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:pixelfield_test_project/router/routes.dart';
 import 'package:pixelfield_test_project/screens/dashboard/dashboard.dart';
 import 'package:pixelfield_test_project/screens/my_collection/my_collection.dart';
+import 'package:pixelfield_test_project/screens/scan/scan.dart';
+import 'package:pixelfield_test_project/screens/settings/settings.dart';
+import 'package:pixelfield_test_project/screens/shop/shop.dart';
 import 'package:pixelfield_test_project/screens/splash/splash.dart';
 
 class AppRouter {
@@ -11,9 +14,7 @@ class AppRouter {
     routes: [
       GoRoute(
         path: AppRoutes.splash,
-        builder: (context, state) {
-          return const Splash();
-        },
+        pageBuilder: (context, state) => const MaterialPage(child: Splash()),
       ),
       ShellRoute(
         builder: (context, state, child) {
@@ -26,6 +27,54 @@ class AppRouter {
                 (context, state) => CustomTransitionPage(
                   key: state.pageKey,
                   child: const MyCollection(),
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                ),
+          ),
+          GoRoute(
+            path: AppRoutes.scan,
+            pageBuilder:
+                (context, state) => CustomTransitionPage(
+                  key: state.pageKey,
+                  child: const ScanScreen(),
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                ),
+          ),
+          GoRoute(
+            path: AppRoutes.shop,
+            pageBuilder:
+                (context, state) => CustomTransitionPage(
+                  key: state.pageKey,
+                  child: const ShopScreen(),
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                ),
+          ),
+          GoRoute(
+            path: AppRoutes.settings,
+            pageBuilder:
+                (context, state) => CustomTransitionPage(
+                  key: state.pageKey,
+                  child: const SettingsScreen(),
                   transitionsBuilder: (
                     context,
                     animation,
