@@ -42,6 +42,13 @@ class CollectionBloc extends HydratedBloc<CollectionEvents, CollectionStates> {
     emit(state.copyWith(fetchCollectionState: FetchCollectionLoadingState()));
     try {
       final collection = await _repo.fetchCollection();
+      emit(
+        state.copyWith(
+          fetchCollectionState: FetchCollectionSuccessState(
+            collection: collection,
+          ),
+        ),
+      );
     } catch (e) {
       emit(
         state.copyWith(

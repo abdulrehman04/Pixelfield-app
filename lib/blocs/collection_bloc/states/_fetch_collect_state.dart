@@ -4,11 +4,12 @@ class FetchCollectionState extends Equatable {
   static bool match(CollectionStates a, CollectionStates b) =>
       a.fetchCollectionState != b.fetchCollectionState;
   final String? message;
+  final CollectionModel? collection;
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [message, collection];
 
-  const FetchCollectionState({this.message});
+  const FetchCollectionState({this.message, this.collection});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{'message': message};
@@ -28,8 +29,7 @@ class FetchCollectionLoadingState extends FetchCollectionState {
 }
 
 class FetchCollectionSuccessState extends FetchCollectionState {
-  final List<CollectionModel> collection;
-  const FetchCollectionSuccessState({required this.collection});
+  const FetchCollectionSuccessState({required super.collection});
 }
 
 class FetchCollectionFailureState extends FetchCollectionState {

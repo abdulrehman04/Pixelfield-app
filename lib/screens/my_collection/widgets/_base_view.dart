@@ -1,7 +1,19 @@
 part of '../my_collection.dart';
 
-class BaseView extends StatelessWidget {
+class BaseView extends StatefulWidget {
   const BaseView({super.key});
+
+  @override
+  State<BaseView> createState() => _BaseViewState();
+}
+
+class _BaseViewState extends State<BaseView> {
+  @override
+  void initState() {
+    super.initState();
+    final bloc = Provider.of<CollectionBloc>(context, listen: false);
+    bloc.add(FetchCollectionEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,66 +35,95 @@ class BaseView extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.only(left: 16.w, top: 16.h, right: 16.w),
-              child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                childAspectRatio: 168 / 313,
-                children:
-                    [1, 2, 3, 4, 5, 6, 7, 8, 9].map<Widget>((item) {
-                      return InkWell(
-                        onTap: () {
-                          context.go('${AppRoutes.details}/123');
-                        },
-                        child: Container(
-                          color: AppTheme.klightBgColor,
-                          child: Column(
-                            children: [
-                              Expanded(
-                                flex: 68,
-                                child: Image.asset(
-                                  'assets/images/png/bottle.png',
-                                ),
-                              ),
-                              Expanded(
-                                flex: 32,
+              child: BlocBuilder<CollectionBloc, CollectionStates>(
+                builder: (context, state) {
+                  if (state.fetchCollectionState
+                          is FetchCollectionLoadingState ||
+                      state.fetchCollectionState
+                          is FetchCollectionDefaultState) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: AppTheme.kPrimaryColor,
+                      ),
+                    );
+                  } else if (state.fetchCollectionState
+                      is FetchCollectionFailureState) {
+                    return Center(
+                      child: Text(
+                        'Error loading collection: ${state.fetchCollectionState.message}',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: AppTheme.kGrey1Color,
+                        ),
+                      ),
+                    );
+                  }
+                  return GridView.count(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    childAspectRatio: 168 / 313,
+                    children:
+                        (state.fetchCollectionState
+                                as FetchCollectionSuccessState)
+                            .collection!
+                            .bottles
+                            .map<Widget>((item) {
+                              return InkWell(
+                                onTap: () {
+                                  context.go('${AppRoutes.details}/${item.id}');
+                                },
                                 child: Container(
-                                  padding: EdgeInsets.only(
-                                    left: 16.w,
-                                    bottom: 16.h,
-                                    right: 16.w,
-                                  ),
+                                  color: AppTheme.klightBgColor,
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        'Springbank 1992 #1234',
-                                        style: Theme.of(
-                                          context,
-                                        ).textTheme.titleLarge?.copyWith(
-                                          color: AppTheme.kGrey1Color,
-                                        ),
+                                      Expanded(
+                                        flex: 68,
+                                        child: Image.asset(item.image),
                                       ),
-                                      Text(
-                                        '(112/158)',
-                                        style: Theme.of(
-                                          context,
-                                        ).textTheme.bodySmall?.copyWith(
-                                          color: AppTheme.kGrey1Color,
+                                      Expanded(
+                                        flex: 32,
+                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                            left: 16.w,
+                                            bottom: 16.h,
+                                            right: 16.w,
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                '${item.name} #${item.id}',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleLarge
+                                                    ?.copyWith(
+                                                      color:
+                                                          AppTheme.kGrey1Color,
+                                                    ),
+                                              ),
+                                              Text(
+                                                '(${item.bottleNumber})',
+                                                style: Theme.of(
+                                                  context,
+                                                ).textTheme.bodySmall?.copyWith(
+                                                  color: AppTheme.kGrey1Color,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }).toList(),
+                              );
+                            })
+                            .toList(),
+                  );
+                },
               ),
             ),
           ),

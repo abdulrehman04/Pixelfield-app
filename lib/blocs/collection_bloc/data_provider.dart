@@ -19,7 +19,7 @@ class _DataProvider {
   }
 
   Future<CollectionModel> fetchCollection() async {
-    if (!readInitialData) {
+    if (!readInitialData || collection == null) {
       await _readInitialData();
     }
     return collection!;

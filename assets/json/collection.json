@@ -4,11 +4,11 @@
         "status": "Genuine Bottle (Unopened)",
         "bottles": [
             {
-                "image": "assets/images/talisker_18.png",
+                "image": "assets/images/png/bottle.png",
                 "bottleNumber": "135/184",
-                "name": "Talisker",
+                "name": "Talisker 1992",
                 "age": "18 Year old",
-                "id": "#2504",
+                "id": "2504",
                 "details": {
                     "Distillery": "Text",
                     "Region": "Text",
@@ -91,11 +91,11 @@
                 ]
             },
             {
-                "image": "assets/images/talisker_18.png",
+                "image": "assets/images/png/bottle.png",
                 "bottleNumber": "135/184",
-                "name": "Talisker",
+                "name": "Talisker 1992",
                 "age": "18 Year old",
-                "id": "#2504",
+                "id": "2504",
                 "details": {
                     "Distillery": "Text",
                     "Region": "Text",
@@ -178,11 +178,11 @@
                 ]
             },
             {
-                "image": "assets/images/talisker_18.png",
+                "image": "assets/images/png/bottle.png",
                 "bottleNumber": "135/184",
-                "name": "Talisker",
+                "name": "Talisker 1992",
                 "age": "18 Year old",
-                "id": "#2504",
+                "id": "2504",
                 "details": {
                     "Distillery": "Text",
                     "Region": "Text",
@@ -265,11 +265,11 @@
                 ]
             },
             {
-                "image": "assets/images/talisker_18.png",
+                "image": "assets/images/png/bottle.png",
                 "bottleNumber": "135/184",
-                "name": "Talisker",
+                "name": "Talisker 1992",
                 "age": "18 Year old",
-                "id": "#2504",
+                "id": "2504",
                 "details": {
                     "Distillery": "Text",
                     "Region": "Text",
