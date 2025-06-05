@@ -1,7 +1,9 @@
 part of '../details.dart';
 
 class TastingNotesSubview extends StatelessWidget {
-  const TastingNotesSubview({super.key});
+  const TastingNotesSubview({super.key, required this.notes});
+
+  final TastingNotes notes;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class TastingNotesSubview extends StatelessWidget {
             ),
             4.verticalSpace,
             Text(
-              'by Charles MacLean MBE',
+              'by ${notes.expert}',
               style: Theme.of(
                 context,
               ).textTheme.bodyLarge?.copyWith(color: AppTheme.kGrey2Color),
@@ -37,20 +39,11 @@ class TastingNotesSubview extends StatelessWidget {
         12.verticalSpace,
         Column(
           children: [
-            NoteItem(
-              title: 'Nose',
-              values: ['Description', 'Description', 'Description'],
-            ),
+            NoteItem(title: 'Nose', values: notes.expert.nose),
             8.verticalSpace,
-            NoteItem(
-              title: 'Palate',
-              values: ['Description', 'Description', 'Description'],
-            ),
+            NoteItem(title: 'Palate', values: notes.expert.palate),
             8.verticalSpace,
-            NoteItem(
-              title: 'Finish',
-              values: ['Description', 'Description', 'Description'],
-            ),
+            NoteItem(title: 'Finish', values: notes.expert.finish),
           ],
         ),
         18.verticalSpace,
@@ -69,20 +62,11 @@ class TastingNotesSubview extends StatelessWidget {
         18.verticalSpace,
         Column(
           children: [
-            NoteItem(
-              title: 'Nose',
-              values: ['Description', 'Description', 'Description'],
-            ),
+            NoteItem(title: 'Nose', values: notes.user.nose),
             8.verticalSpace,
-            NoteItem(
-              title: 'Palate',
-              values: ['Description', 'Description', 'Description'],
-            ),
+            NoteItem(title: 'Palate', values: notes.user.palate),
             8.verticalSpace,
-            NoteItem(
-              title: 'Finish',
-              values: ['Description', 'Description', 'Description'],
-            ),
+            NoteItem(title: 'Finish', values: notes.user.finish),
           ],
         ),
       ],

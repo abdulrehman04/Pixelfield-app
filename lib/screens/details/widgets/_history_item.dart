@@ -1,9 +1,14 @@
 part of '../details.dart';
 
 class HistoryItem extends StatelessWidget {
-  const HistoryItem({super.key, this.isFirstItem = false});
+  const HistoryItem({
+    super.key,
+    this.isFirstItem = false,
+    required this.history,
+  });
 
   final bool isFirstItem;
+  final BottleHistory history;
 
   @override
   Widget build(BuildContext context) {
@@ -56,31 +61,27 @@ class HistoryItem extends StatelessWidget {
                 children: [
                   16.verticalSpace,
                   Text(
-                    'Label',
+                    history.label,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppTheme.kGrey1Color,
                     ),
                   ),
                   8.verticalSpace,
                   Text(
-                    'Title',
+                    history.title,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: AppTheme.kGrey1Color,
                     ),
                   ),
                   8.verticalSpace,
-                  Text(
-                    'Description',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
-                  Text(
-                    'Description',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppTheme.kGrey1Color,
-                    ),
-                  ),
+                  ...(history.descriptions.map((e) {
+                    return Text(
+                      'Description',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: AppTheme.kGrey1Color,
+                      ),
+                    );
+                  }).toList()),
                   8.verticalSpace,
 
                   // Attachments
@@ -107,7 +108,7 @@ class HistoryItem extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children:
-                              [1, 2, 3].map((e) {
+                              history.attachments.map((e) {
                                 return Container(
                                   height: 64,
                                   width: 64,

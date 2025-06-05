@@ -16,9 +16,9 @@ class _ScreenState extends ChangeNotifier {
       case SubpageEnum.Details:
         return DetailsSubPage(details: bottle.details);
       case SubpageEnum.Tasting_Notes:
-        return TastingNotesSubview();
+        return TastingNotesSubview(notes: bottle.tastingNotes);
       case SubpageEnum.History:
-        return HistorySubview();
+        return HistorySubview(history: bottle.history);
     }
   }
 }
