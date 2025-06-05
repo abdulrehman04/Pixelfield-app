@@ -1,14 +1,16 @@
 enum SubpageEnum {
-  Details,
-  Tasting_Notes,
-  History;
+  details,
+  tastingNotes,
+  history;
 
   String get label {
     switch (this) {
-      case SubpageEnum.Tasting_Notes:
+      case SubpageEnum.tastingNotes:
         return 'Tasting Notes';
-      default:
-        return name;
+      case SubpageEnum.details:
+        return 'Details';
+      case SubpageEnum.history:
+        return 'History';
     }
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pixelfield_test_project/configs/configs.dart';
 
 class PageHeading extends StatelessWidget {
