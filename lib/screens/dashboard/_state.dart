@@ -4,15 +4,28 @@ class _ScreenState extends ChangeNotifier {
   static _ScreenState s(BuildContext context, [listen = false]) =>
       Provider.of<_ScreenState>(context, listen: listen);
 
-  getIndex(Widget child) {
-    if (child is MyCollection) {
-      return 1;
-    } else if (child is ScanScreen) {
-      return 0;
-    } else if (child is ShopScreen) {
-      return 2;
-    } else if (child is SettingsScreen) {
-      return 3;
+  int calculateIndex(String location) {
+    if (location.startsWith(AppRoutes.scan)) return 0;
+    if (location.startsWith(AppRoutes.myCollection)) return 1;
+    if (location.startsWith(AppRoutes.shop)) return 2;
+    if (location.startsWith(AppRoutes.settings)) return 3;
+    return 0;
+  }
+
+  void onItemTapped(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        context.go(AppRoutes.scan);
+        break;
+      case 1:
+        context.go(AppRoutes.myCollection);
+        break;
+      case 2:
+        context.go(AppRoutes.shop);
+        break;
+      case 3:
+        context.go(AppRoutes.settings);
+        break;
     }
   }
 }
