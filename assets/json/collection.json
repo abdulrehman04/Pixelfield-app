@@ -5,6 +5,7 @@
         "bottles": [
             {
                 "image": "assets/images/png/bottle.png",
+                "largeImg": "assets/images/png/large_bottle.png",
                 "bottleNumber": "135/184",
                 "name": "Talisker 1992",
                 "age": "18 Year old",
@@ -92,6 +93,7 @@
             },
             {
                 "image": "assets/images/png/bottle.png",
+                "largeImg": "assets/images/png/large_bottle.png",
                 "bottleNumber": "135/184",
                 "name": "Talisker 1992",
                 "age": "18 Year old",
@@ -179,6 +181,7 @@
             },
             {
                 "image": "assets/images/png/bottle.png",
+                "largeImg": "assets/images/png/large_bottle.png",
                 "bottleNumber": "135/184",
                 "name": "Talisker 1992",
                 "age": "18 Year old",
@@ -266,6 +269,7 @@
             },
             {
                 "image": "assets/images/png/bottle.png",
+                "largeImg": "assets/images/png/large_bottle.png",
                 "bottleNumber": "135/184",
                 "name": "Talisker 1992",
                 "age": "18 Year old",

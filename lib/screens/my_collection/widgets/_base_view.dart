@@ -57,20 +57,30 @@ class _BaseViewState extends State<BaseView> {
                       ),
                     );
                   }
+                  CollectionModel collection =
+                      (state.fetchCollectionState
+                              as FetchCollectionSuccessState)
+                          .collection!;
                   return GridView.count(
                     crossAxisCount: 2,
                     mainAxisSpacing: 8,
                     crossAxisSpacing: 8,
                     childAspectRatio: 168 / 313,
                     children:
-                        (state.fetchCollectionState
-                                as FetchCollectionSuccessState)
-                            .collection!
-                            .bottles
-                            .map<Widget>((item) {
-                              return CollectionItem(item: item);
-                            })
-                            .toList(),
+                        collection.bottles.map<Widget>((item) {
+                          return CollectionItem(
+                            item: item,
+                            onTap: () {
+                              context.go(
+                                '${AppRoutes.details}/${item.id}',
+                                extra: {
+                                  'collectionName': collection.collectionName,
+                                  'item': item,
+                                },
+                              );
+                            },
+                          );
+                        }).toList(),
                   );
                 },
               ),

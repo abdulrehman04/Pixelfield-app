@@ -1,16 +1,15 @@
 part of '../my_collection.dart';
 
 class CollectionItem extends StatelessWidget {
-  const CollectionItem({super.key, required this.item});
+  const CollectionItem({super.key, required this.item, this.onTap});
 
   final Bottle item;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        context.go('${AppRoutes.details}/${item.id}');
-      },
+      onTap: onTap,
       child: Container(
         color: AppTheme.klightBgColor,
         child: Column(

@@ -4,6 +4,7 @@ import 'package:pixelfield_test_project/models/tasting_notes.dart';
 
 class Bottle {
   final String image;
+  final String largeImage;
   final String bottleNumber;
   final String name;
   final String age;
@@ -23,6 +24,7 @@ class Bottle {
     required this.tastingNotes,
     required this.history,
     required this.status,
+    required this.largeImage,
   });
 
   factory Bottle.fromJson(Map<String, dynamic> json) {
@@ -35,6 +37,7 @@ class Bottle {
       status: json['status'] ?? 'Opened',
       details: BottleDetails.fromJson(json['details']),
       tastingNotes: TastingNotes.fromJson(json['tastingNotes']),
+      largeImage: json['largeImg'],
       history:
           (json['history'] as List)
               .map((e) => BottleHistory.fromJson(e))

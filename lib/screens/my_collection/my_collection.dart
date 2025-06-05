@@ -7,6 +7,7 @@ import 'package:pixelfield_test_project/blocs/collection_bloc/event.dart';
 import 'package:pixelfield_test_project/blocs/collection_bloc/state.dart';
 import 'package:pixelfield_test_project/configs/configs.dart';
 import 'package:pixelfield_test_project/models/bottle_model.dart';
+import 'package:pixelfield_test_project/models/collection_model.dart';
 import 'package:pixelfield_test_project/router/routes.dart';
 import 'package:pixelfield_test_project/widgets/ui/page_heading.dart';
 import 'package:pixelfield_test_project/widgets/responsive.dart';
