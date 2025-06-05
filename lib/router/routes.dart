@@ -4,4 +4,6 @@ class AppRoutes {
   static const scan = '/scan';
   static const shop = '/shop';
   static const settings = '/settings';
+
+  static const details = 'details';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pixelfield_test_project/router/routes.dart';
 import 'package:pixelfield_test_project/screens/dashboard/dashboard.dart';
+import 'package:pixelfield_test_project/screens/details/details.dart';
 import 'package:pixelfield_test_project/screens/my_collection/my_collection.dart';
 import 'package:pixelfield_test_project/screens/scan/scan.dart';
 import 'package:pixelfield_test_project/screens/settings/settings.dart';
@@ -36,6 +37,26 @@ class AppRouter {
                     return FadeTransition(opacity: animation, child: child);
                   },
                 ),
+            routes: [
+              GoRoute(
+                path: '${AppRoutes.details}/:id',
+                pageBuilder: (context, state) {
+                  final id = state.pathParameters['id']!;
+                  return CustomTransitionPage(
+                    key: state.pageKey,
+                    child: DetailsScreen(id: id),
+                    transitionsBuilder: (
+                      context,
+                      animation,
+                      secondaryAnimation,
+                      child,
+                    ) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                  );
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: AppRoutes.scan,
