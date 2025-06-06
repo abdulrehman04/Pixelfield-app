@@ -8,3 +8,7 @@ class CollectionEvents extends Equatable {
 class FetchCollectionEvent extends CollectionEvents {
   FetchCollectionEvent();
 }
+
+class SyncCollectionEvent extends CollectionEvents {
+  SyncCollectionEvent();
+}
