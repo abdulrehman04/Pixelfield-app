@@ -62,7 +62,7 @@ class _BaseViewState extends State<BaseView> {
                     final successState =
                         state.fetchCollectionState
                             as FetchCollectionSuccessState;
-                    CollectionModel collection = successState.collection!;
+                    CollectionModel collection = successState.collection;
 
                     return GridView.count(
                       crossAxisCount: 2,

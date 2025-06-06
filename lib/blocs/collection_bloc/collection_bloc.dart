@@ -29,7 +29,6 @@ class CollectionBloc extends HydratedBloc<CollectionEvents, CollectionStates> {
 
   void _initConnectivityListener() {
     ConnectivityService().onConnectivityChanged.listen((hasInternet) {
-      print(hasInternet);
       if (hasInternet) {
         add(SyncCollectionEvent());
       }
@@ -141,13 +140,10 @@ class CollectionBloc extends HydratedBloc<CollectionEvents, CollectionStates> {
       final hasInternet = await ConnectivityService().checkInternet();
 
       if (!hasInternet) {
-        print('Sync requested but no internet available');
         return;
       }
 
-      print('Syncing data from internet...');
-
-      // Don't show loading if we already have data
+      // Don't show loading if has data
       if (state.fetchCollectionState is! FetchCollectionSuccessState) {
         emit(
           state.copyWith(fetchCollectionState: FetchCollectionLoadingState()),
@@ -162,11 +158,7 @@ class CollectionBloc extends HydratedBloc<CollectionEvents, CollectionStates> {
           ),
         ),
       );
-
-      print('Successfully synced data from internet');
     } catch (e) {
-      print('Error syncing data: $e');
-      // Don't emit error if we already have cached data
       if (state.fetchCollectionState is! FetchCollectionSuccessState) {
         emit(
           state.copyWith(
