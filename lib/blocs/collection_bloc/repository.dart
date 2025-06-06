@@ -1,7 +1,7 @@
 part of '../collection_bloc/collection_bloc.dart';
 
 class _CollectionRepo implements ICollectionRepoInterface {
-  final _DataProvider _dataProvider = _DataProvider.instance;
+  final DataProvider _dataProvider = DataProvider.instance;
 
   @override
   Future<CollectionModel> fetchCollection() async {

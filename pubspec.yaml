@@ -47,6 +47,9 @@ dependencies:
   # Responsive
   flutter_screenutil: ^5.9.3
 
+  # Connectivity
+  connectivity_plus: ^5.0.2
+
   # UI
   google_fonts: ^6.2.1
 

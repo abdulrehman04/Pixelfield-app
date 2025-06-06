@@ -13,10 +13,27 @@ class BottleHistory {
 
   factory BottleHistory.fromJson(Map<String, dynamic> json) {
     return BottleHistory(
-      label: json['label'],
-      title: json['title'],
-      descriptions: List<String>.from(json['descriptions']),
-      attachments: List<String>.from(json['attachments']),
+      label: json['label']?.toString() ?? '',
+      title: json['title']?.toString() ?? '',
+      descriptions:
+          (json['descriptions'] as List<dynamic>?)
+              ?.map((e) => e?.toString() ?? '')
+              .toList() ??
+          [],
+      attachments:
+          (json['attachments'] as List<dynamic>?)
+              ?.map((e) => e?.toString() ?? '')
+              .toList() ??
+          [],
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'label': label,
+      'title': title,
+      'descriptions': descriptions,
+      'attachments': attachments,
+    };
   }
 }

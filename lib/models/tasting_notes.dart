@@ -6,9 +6,15 @@ class TastingNotes {
 
   factory TastingNotes.fromJson(Map<String, dynamic> json) {
     return TastingNotes(
-      expert: TastingEntry.fromJson(json['expert']),
-      user: TastingEntry.fromJson(json['user']),
+      expert: TastingEntry.fromJson(
+        json['expert'] as Map<String, dynamic>? ?? {},
+      ),
+      user: TastingEntry.fromJson(json['user'] as Map<String, dynamic>? ?? {}),
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {'expert': expert.toMap(), 'user': user.toMap()};
   }
 }
 
@@ -27,10 +33,26 @@ class TastingEntry {
 
   factory TastingEntry.fromJson(Map<String, dynamic> json) {
     return TastingEntry(
-      author: json['author'],
-      nose: List<String>.from(json['Nose']),
-      palate: List<String>.from(json['Palate']),
-      finish: List<String>.from(json['Finish']),
+      author: json['author']?.toString(),
+      nose:
+          (json['Nose'] as List<dynamic>?)
+              ?.map((e) => e?.toString() ?? '')
+              .toList() ??
+          [],
+      palate:
+          (json['Palate'] as List<dynamic>?)
+              ?.map((e) => e?.toString() ?? '')
+              .toList() ??
+          [],
+      finish:
+          (json['Finish'] as List<dynamic>?)
+              ?.map((e) => e?.toString() ?? '')
+              .toList() ??
+          [],
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {'author': author, 'Nose': nose, 'Palate': palate, 'Finish': finish};
   }
 }

@@ -1,27 +1,45 @@
-part of '../collection_bloc/collection_bloc.dart';
+import 'package:pixelfield_test_project/api/api.dart';
+import 'package:pixelfield_test_project/models/collection_model.dart';
+import 'package:pixelfield_test_project/service/connectivity_service.dart';
 
-class _DataProvider {
-  static final _DataProvider instance = _DataProvider._();
-  _DataProvider._() {
-    _readInitialData();
-  }
+/// This should be a part-of directive in real-cases
+/// but is made public to allow early data load
+class DataProvider {
+  static final DataProvider instance = DataProvider._();
+  DataProvider._();
 
   CollectionModel? collection;
-
   bool readInitialData = false;
 
-  Future<void> _readInitialData() async {
-    readInitialData = true;
-    API api = API();
-    var collectionData = await api.fetchCollection();
+  Future<CollectionModel> _fetchFromAPI() async {
+    final api = API();
+    final json = await api.fetchCollection();
+    return CollectionModel.fromJson(json);
+  }
 
-    collection = CollectionModel.fromJson(collectionData);
+  /// Called at app startup to pre-load data
+  Future<void> preload() async {
+    if (readInitialData) return;
+    final isOnline = await ConnectivityService().checkInternet();
+
+    if (isOnline) {
+      collection = await _fetchFromAPI();
+    }
+    readInitialData = true;
   }
 
   Future<CollectionModel> fetchCollection() async {
-    if (!readInitialData || collection == null) {
-      await _readInitialData();
+    final isOnline = await ConnectivityService().checkInternet();
+    if (isOnline) {
+      collection = await _fetchFromAPI();
+      readInitialData = true;
+      return collection!;
+    } else {
+      if (collection != null) {
+        return collection!;
+      } else {
+        throw Exception("No internet and no local data available");
+      }
     }
-    return collection!;
   }
 }

@@ -50,38 +50,52 @@ class _BaseViewState extends State<BaseView> {
                       is FetchCollectionFailureState) {
                     return Center(
                       child: Text(
-                        'Error loading collection: ${state.fetchCollectionState.message}',
+                        'Error loading collection: ${(state.fetchCollectionState as FetchCollectionFailureState).message}',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: AppTheme.kGrey1Color,
+                        ),
+                      ),
+                    );
+                  } else if (state.fetchCollectionState
+                      is FetchCollectionSuccessState) {
+                    // Safe cast after type check
+                    final successState =
+                        state.fetchCollectionState
+                            as FetchCollectionSuccessState;
+                    CollectionModel collection = successState.collection!;
+
+                    return GridView.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 8,
+                      crossAxisSpacing: 8,
+                      childAspectRatio: 168 / 313,
+                      children:
+                          collection.bottles.map<Widget>((item) {
+                            return CollectionItem(
+                              item: item,
+                              onTap: () {
+                                context.go(
+                                  '${AppRoutes.details}/${item.id}',
+                                  extra: {
+                                    'collectionName': collection.collectionName,
+                                    'item': item,
+                                  },
+                                );
+                              },
+                            );
+                          }).toList(),
+                    );
+                  } else {
+                    // Handle any other unknown state
+                    return Center(
+                      child: Text(
+                        'Unknown state: ${state.fetchCollectionState.runtimeType}',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           color: AppTheme.kGrey1Color,
                         ),
                       ),
                     );
                   }
-                  CollectionModel collection =
-                      (state.fetchCollectionState
-                              as FetchCollectionSuccessState)
-                          .collection!;
-                  return GridView.count(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                    childAspectRatio: 168 / 313,
-                    children:
-                        collection.bottles.map<Widget>((item) {
-                          return CollectionItem(
-                            item: item,
-                            onTap: () {
-                              context.go(
-                                '${AppRoutes.details}/${item.id}',
-                                extra: {
-                                  'collectionName': collection.collectionName,
-                                  'item': item,
-                                },
-                              );
-                            },
-                          );
-                        }).toList(),
-                  );
                 },
               ),
             ),

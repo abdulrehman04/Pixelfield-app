@@ -1,37 +1,103 @@
+// Add this to your _fetch_collect_state.dart file
+
 part of '../collection_bloc.dart';
 
-class FetchCollectionState extends Equatable {
-  static bool match(CollectionStates a, CollectionStates b) =>
-      a.fetchCollectionState != b.fetchCollectionState;
-  final String? message;
-  final CollectionModel? collection;
+abstract class FetchCollectionState extends Equatable {
+  const FetchCollectionState();
 
-  @override
-  List<Object?> get props => [message, collection];
+  Map<String, dynamic> toMap();
 
-  const FetchCollectionState({this.message, this.collection});
+  static FetchCollectionState fromMap(Map<String, dynamic> map) {
+    final stateType = map['stateType'] as String;
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{'message': message};
-  }
-
-  factory FetchCollectionState.fromMap(Map<String, dynamic> map) {
-    return FetchCollectionState(message: map['message'] as String);
+    switch (stateType) {
+      case 'FetchCollectionSuccessState':
+        return FetchCollectionSuccessState.fromMap(map);
+      case 'FetchCollectionLoadingState':
+        return FetchCollectionLoadingState.fromMap(map);
+      case 'FetchCollectionFailureState':
+        return FetchCollectionFailureState.fromMap(map);
+      case 'FetchCollectionDefaultState':
+      default:
+        return FetchCollectionDefaultState.fromMap(map);
+    }
   }
 }
 
 class FetchCollectionDefaultState extends FetchCollectionState {
   const FetchCollectionDefaultState();
+
+  @override
+  List<Object> get props => [];
+
+  @override
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{'stateType': 'FetchCollectionDefaultState'};
+  }
+
+  static FetchCollectionDefaultState fromMap(Map<String, dynamic> map) {
+    return const FetchCollectionDefaultState();
+  }
 }
 
 class FetchCollectionLoadingState extends FetchCollectionState {
   const FetchCollectionLoadingState();
+
+  @override
+  List<Object> get props => [];
+
+  @override
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{'stateType': 'FetchCollectionLoadingState'};
+  }
+
+  static FetchCollectionLoadingState fromMap(Map<String, dynamic> map) {
+    return const FetchCollectionLoadingState();
+  }
 }
 
 class FetchCollectionSuccessState extends FetchCollectionState {
-  const FetchCollectionSuccessState({required super.collection});
+  final CollectionModel collection;
+
+  const FetchCollectionSuccessState({required this.collection});
+
+  @override
+  List<Object> get props => [collection];
+
+  @override
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'stateType': 'FetchCollectionSuccessState',
+      'collection': collection.toMap(),
+    };
+  }
+
+  static FetchCollectionSuccessState fromMap(Map<String, dynamic> map) {
+    return FetchCollectionSuccessState(
+      collection: CollectionModel.fromJson(
+        map['collection'] as Map<String, dynamic>,
+      ),
+    );
+  }
 }
 
 class FetchCollectionFailureState extends FetchCollectionState {
-  const FetchCollectionFailureState({required super.message});
+  final String message;
+
+  const FetchCollectionFailureState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+
+  @override
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'stateType': 'FetchCollectionFailureState',
+      'message': message,
+    };
+  }
+
+  static FetchCollectionFailureState fromMap(Map<String, dynamic> map) {
+    return FetchCollectionFailureState(message: map['message'] as String);
+  }
 }
