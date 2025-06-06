@@ -7,6 +7,7 @@ import 'package:pixelfield_test_project/configs/configs.dart';
 import 'package:pixelfield_test_project/configs/theme/_text_theme.dart';
 import 'package:pixelfield_test_project/router/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pixelfield_test_project/widgets/connectivity_toast_wrapper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +15,7 @@ Future<void> main() async {
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -46,6 +47,10 @@ class MyApp extends StatelessWidget {
             routerDelegate: AppRouter.router.routerDelegate,
             routeInformationParser: AppRouter.router.routeInformationParser,
             routeInformationProvider: AppRouter.router.routeInformationProvider,
+
+            builder: (context, child) {
+              return ConnectivityToastWrapper(child: child!);
+            },
           );
         },
       ),
