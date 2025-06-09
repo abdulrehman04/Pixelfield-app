@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pixelfield_test_project/configs/configs.dart';
 import 'package:pixelfield_test_project/models/bottle_details.dart';
 import 'package:pixelfield_test_project/models/bottle_history.dart';
 import 'package:pixelfield_test_project/models/bottle_model.dart';
 import 'package:pixelfield_test_project/models/tasting_notes.dart';
+import 'package:pixelfield_test_project/router/routes.dart';
 import 'package:pixelfield_test_project/screens/details/static/subpage_enum.dart';
 import 'package:pixelfield_test_project/screens/details/widgets/_history_subview.dart';
 import 'package:pixelfield_test_project/widgets/buttons/app_button.dart';

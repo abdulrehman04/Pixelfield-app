@@ -22,13 +22,18 @@ class CollectionName extends StatelessWidget {
               ).textTheme.bodySmall?.copyWith(color: AppTheme.kGrey1Color),
             ),
           ),
-          Container(
-            padding: EdgeInsets.all(13.2),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppTheme.kDarkbgColor,
+          InkWell(
+            onTap: () {
+              context.go(AppRoutes.myCollection);
+            },
+            child: Container(
+              padding: EdgeInsets.all(13.2),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppTheme.kDarkbgColor,
+              ),
+              child: Icon(Icons.close, color: AppTheme.kGrey1Color, size: 24),
             ),
-            child: Icon(Icons.close, color: AppTheme.kGrey1Color, size: 24),
           ),
         ],
       ),
